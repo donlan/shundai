@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_seekHelp"
+    android:orientation="vertical">
+    <FrameLayout
+        android:background="@color/normal_ba"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:singleLine="true"
+            android:gravity="center"
+            android:text="@string/wu"
+            android:id="@+id/title_bar"
+            android:textSize="20sp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:textColor="@color/md_white_1000"
+            android:layout_width="match_parent"
+            android:layout_height="45dp" />
+        <TextView
+            android:layout_gravity="end"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/more_dual"
+            android:gravity="center"
+            android:id="@+id/bar_right"
+            android:layout_width="45dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:drawableRight="@drawable/bar_left"
+            android:id="@+id/back_forward"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+    <LinearLayout
+        android:background="@color/normal_ba"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+
+        <Button
+            android:id="@+id/help_person"
+            android:text="@string/people"
+            android:background="@drawable/help_pager_button"
+            android:textSize="@dimen/text_big16_size"
+            android:textColor="@color/md_white_1000"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/help_goods"
+            android:text="@string/wu"
+            android:background="@drawable/help_pager_button"
+            android:textSize="@dimen/text_big16_size"
+            android:textColor="@color/md_white_1000"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/help_other"
+            android:background="@drawable/help_pager_button"
+            android:text="@string/other"
+            android:textSize="@dimen/text_big16_size"
+            android:textColor="@color/md_white_1000"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+   <android.support.v4.view.ViewPager
+       android:id="@+id/helpViewPager"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"/>
+</LinearLayout>

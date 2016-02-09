@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_ba"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        >
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/bar_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="生日设置"
+            android:textColor="@color/md_white_1000"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/text_big18_size" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:textColor="@color/md_white_1000"
+        android:textSize="@dimen/text_big16_size"
+        android:text="设置之后将不能修改"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+            <DatePicker
+                android:id="@+id/birth_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:calendarViewShown="true"
+                android:background="@color/normal_bg_four"
+                android:headerBackground="@color/normal_bg_five"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
+                android:soundEffectsEnabled="true" />
+</LinearLayout>

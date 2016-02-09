@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+	<string name="UMBreak_Network">网络连接失败无法完成更新</string>
+	<string name="UMUpdateTitle">发现新版本啦</string>
+	<string name="UMNewVersion">最新版本: </string>
+	<string name="UMUpdateContent">更新详情</string>
+	<string name="UMUpdateSize">更新包大小: </string>
+	<string name="UMTargetSize">完整安装包大小: </string>
+	<string name="UMGprsCondition">(当前不是WIFI环境哟)</string>
+	<string name="UMUpdateNow">马上升级</string>
+	<string name="UMAppUpdate">升级中…</string>
+	<string name="UMNotNow">下次提醒</string>
+	<string name="UMIgnore">忽略此版本</string>
+	<string name="UMToast_IsUpdating">升级中....</string>
+	<string name="UMDialog_InstallAPK">更新包下载完成，是否现在安装 ?</string>
+	<string name="UMUpdateCheck">2.6.0.1.20150312</string>
+    
+</resources>

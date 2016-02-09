@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/normal_ba"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/backUp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bar_back_n"
+            android:paddingLeft="8dp"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="城市"
+            android:textColor="#ffffff"
+            android:textSize="23sp" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/city_gps_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="10dp"
+            android:text="@string/gps"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/city_now_city_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/loc"
+            android:drawablePadding="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/now_city"
+            android:textSize="@dimen/test_size_default" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/md_white_1000" />
+
+    <TextView
+        android:id="@+id/city_recently_tvbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:drawablePadding="15dp"
+        android:gravity="center"
+        android:text="@string/recently"
+        android:textSize="15dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/city_city11_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/circle3"
+            android:padding="10dp"
+            android:text="城市1"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/city_city12_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/circle6"
+            android:padding="10dp"
+            android:text="城市2"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/city_city13_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/circle7"
+            android:padding="10dp"
+            android:text="城市3"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/city_city14_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/circle1"
+            android:padding="10dp"
+            android:text="城市4"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/city_city15_tvbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/circle5"
+            android:padding="10dp"
+            android:text="城市5"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/md_white_1000" />
+    <TextView
+        android:id="@+id/city_all_city_tvbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="@string/all_city"
+        android:textSize="15dp" />
+
+
+    <ListView
+        android:dividerHeight="4dp"
+        android:divider="@color/md_grey_100"
+        android:id="@+id/allRegiCity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        >
+
+    </ListView>
+
+
+</LinearLayout>

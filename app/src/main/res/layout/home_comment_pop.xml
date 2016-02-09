@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/pop_bg"
+    >
+
+    <TextView
+        android:gravity="center"
+        android:text="评论帮忙"
+        android:textSize="20sp"
+        android:textColor="@color/md_grey_900"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:layout_marginTop="50dp"
+        android:minWidth="300dp"
+        android:id="@+id/home_com_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_alpha_white"
+        android:gravity="start"
+        android:hint="给Ta写点东西"
+        android:minHeight="120dp"
+        android:padding="10dp"
+        android:textColor="@color/md_grey_800"
+        android:textColorHint="@color/md_grey_800"
+        />
+
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/md_white_1000"
+        android:layout_gravity="center"
+        android:id="@+id/home_com_done"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/done" />
+
+
+</RelativeLayout>

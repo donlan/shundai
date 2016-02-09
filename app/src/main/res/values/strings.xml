@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="feed_detail">feed详情页面</string>
+    <string name="msg">进入友盟社区</string>
+    <string name="user_info">用户信息页面</string>
+    <string name="search_topic">话题搜索</string>
+    <string name="select_location">话题搜索</string>
+    <string name="follow_topic">话题搜索</string>
+
+    <string name="agreement">欢迎您使用顺带.     你注册即代表您同意了一下条款：\n 1.我们承诺注册手机号仅用于找回密码是使用，绝对不会外泄。\n 2.使用本软件请不要发布色情暴力，违法等信息，我们有权向公安机关举报，并且这样造成的形式责任全部由用户负责。\n 3.最后希望所有用户能在顺带之中找打更多欢乐。</string>
+    <string name="action_new_conversation">新建会话</string>
+    <string name="feedback_title">用户反馈</string>
+    <string name="multi_conversation_activity">多会话模式</string>
+    <string name="title_item_list">反馈列表</string>
+    <string name="fb_help_activity">帮助页面</string>
+    <string name="btn_show_offerswall">展示积分墙(全屏)</string>
+    <string name="btn_show_offerswall_dialog">展示积分墙(对话框)</string>
+    <string name="btn_award_points">奖励10积分</string>
+    <string name="btn_spend_points">消费20积分</string>
+    <string name="btn_get_online_config">获取有米在线参数</string>
+    <string name="btn_check_reach_ntp_time">是否达到指定网络时间</string>
+    <string name="btn_check_ad_config">检查广告配置</string>
+
+    <string name="login_username_hint">用户名</string>
+    <string name="login_password_hint">密码</string>
+    <string name="login_email_hint">密码</string>
+    <string name="login">登录</string>
+    <string name="register_txt1">还没有账号？</string>
+    <string name="register_txt2">立即注册 ></string>
+    <string name="login_account">账号:</string>
+    <string name="login_pwd">密码:</string>
+    <string name="login_email">确认密码</string>
+    <string name="message_search_hint">搜索&#8230;</string>
+
+    <string name="main_tab_recent">会话</string>
+    <string name="main_tab_contact">联系人</string>
+    <string name="mian_tab_set">设置</string>
+
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载&#8230;</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+    <string name="add_avator">头像</string>
+    <string name="add_nick">昵称</string>
+    <string name="add_name">账号</string>
+    <string name="add_name_hint">请输入昵称&#8230;</string>
+    <string name="add_gender">性别</string>
+
+    <string name="set_notify">接收新消息通知</string>
+    <string name="set_myinfo">个人资料</string>
+    <string name="set_blacklist">黑名单</string>
+    <string name="set_voice">声音</string>
+    <string name="set_vibrate">震动</string>
+    <string name="tips">提示</string>
+
+    <string name="logout">退出登陆</string>
+    <string name="pop_photo">拍照</string>
+    <string name="pop_choose">从手机相册选中</string>
+    <string name="network_tips">当前网络不可用,请检查您的网络!</string>
+    <string name="toast_error_password_null">密码不能为空</string>
+    <string name="toast_error_username_null">用户名不能为空</string>
+    <string name="toast_error_comfirm_password">输入的两次密码不一致</string>
+
+    <string name="blacklist">黑名单</string>
+    <string name="chat">发起会话</string>
+    <string name="add_friend">添加好友</string>
+
+    <string name="send_state">已读</string>
+
+    <string name="longclick_speak">长按说话</string>
+    <string name="picture">照片</string>
+    <string name="camera">拍摄</string>
+    <string name="location">位置</string>
+
+    <string name="black_tips">已添加至黑名单，你将不再收到对方的消息!</string>
+
+    <string name="username">用户名</string>
+    <string name="search">搜索</string>
+
+    <string name="new_friends">新朋友</string>
+
+    <string name="near_people">附近的人</string>
+
+    <string name="voice_up_tips">手指上滑,取消发送</string>
+    <string name="voice_cancel_tips">松开手指，取消发送</string>
+
+    <string name="voice_seconds_tips">还可以说%1$s秒</string>
+
+    <string name="voice_short_tips">录音时间太短</string>
+
+
+    <string name="app_name">顺带</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">顺带。</string>
+
+    <string name="register">注册</string>
+    <string name="enter">登录</string>
+    <string name="user_name">用户名</string>
+    <string name="password">密码</string>
+    <string name="phone_number">手机号码:</string>
+    <string name="checking_number">验证码</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="birthday">出生日期:</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="treaty">条款协议</string>
+    <string name="agree">我同意</string>
+    <string name="seek_help">求带</string>
+    <string name="help">帮带</string>
+    <string name="people">带人</string>
+    <string name="thing">带物</string>
+    <string name="other">其它</string>
+
+
+    <string name="china">全国</string>
+    <string name="my_friend">我的好友</string>
+    <string name="nearby">附近</string>
+    <string name="basic_information">基本信息</string>
+    <string name="help_information">帮忙信息:</string>
+    <string name="time">发布时间:</string>
+    <string name="base_information">基础信息:</string>
+    <string name="making_friends">交友宣言:</string>
+    <string name="emotion">感情状态:</string>
+    <string name="visit">访客</string>
+    <string name="comment">评论</string>
+    <string name="name">昵称</string>
+
+    <string name="choose">选择城市</string>
+    <string name="gps">定位城市:</string>
+    <string name="now_city">当前城市</string>
+    <string name="recently">最近访问:</string>
+    <string name="all_city">全部城市:</string>
+
+    <string name="help_community">顺带社区</string>
+    <string name="city">城市∨</string>
+
+    <string name="hint_user_name">请输入用户名</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="hint_phone_number">请输入手机号</string>
+    <string name="ren">带人</string>
+    <string name="wu">带物</string>
+    <string name="qita">其他</string>
+    <string name="qiu_dai">求带</string>
+    <string name="bang_dai">帮带</string>
+    <string name="send_help">发布帮忙信息</string>
+    <string name="et_hint">写帮忙..</string>
+    <string name="about">关于我们</string>
+    <string name="feek_to_us">给我们反馈</string>
+    <string name="about_info">顺带是一个基于位置信息的新型社交软件，我们希望您能在顺带乐享其中。\n如有任何使用问题请给我们反馈</string>
+    <string name="feekback_help_hit">请将你的的反馈或者问题填写到下面的空白框中</string>
+    <string name="hint_feekback">填写反馈或者问题</string>
+    <string name="feed_text_contact">请填写您的QQ号或者手机号码</string>
+    <string name="cityAc">城市活跃度</string>
+    <string name="getvernum">获取验证码</string>
+    <string name="forgot_pass">忘记密码？</string>
+    <string name="enter_phone">手机号码</string>
+    <string name="moreSetting">更多设置</string>
+    <string name="verify_email">验证邮箱</string>
+    <string name="enter_email_hint">输入email地址</string>
+    <string name="share">分享</string>
+    <string name="report">举报</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="no_comment_tips">没有用户评论</string>
+    <string name="near_noone_tips">附近没有人哟,下拉刷新或者点击右上角选择搜索范围~</string>
+    <string name="umeng_common_action_cancel">取消</string>
+    <string name="umeng_common_icon">图标</string>
+    <string name="umeng_common_action_pause">暂停</string>
+
+
+    <string name="umeng_share">分享</string>
+    <string name="umeng_auth">授权</string>
+    <string name="umeng_deleauth">清除对应授权</string>
+    <string name="umeng_shake">摇一摇</string>
+    <string name="umeng_comment">评论相关</string>
+    <string name="umeng_openshare">打开分享面板</string>
+
+    <string name="umeng_share1">默认分享面板可编辑分享页</string>
+    <string name="umeng_share2">自定义分享面板可编辑分享页</string>
+    <string name="umeng_share3">单平台直接分享</string>
+    <string name="umeng_share4">多平台直接分享</string>
+    <string name="umeng_share5">默认分享面板可编辑分享页多平台</string>
+
+    <string name="umeng_shakeshotscreen">摇一摇截屏</string>
+    <string name="umeng_shakeshare">摇一摇分享</string>
+    <string name="umeng_registershake">注册摇一摇</string>
+
+    <string name="umeng_comment1">用户信息</string>
+    <string name="umeng_comment2">本地登陆</string>
+    <string name="umeng_comment3">本地授权</string>
+    <string name="umeng_comment4">好友功能</string>
+    <string name="umeng_comment5">评论功能</string>
+    <string name="umeng_comment6">注销</string>
+    <string name="umeng_comment7">解决事例</string>
+
+    <string name="umeng_nativequery">本地登陆信息查询</string>
+    <string name="umeng_loginsina">登陆新浪</string>
+    <string name="umeng_logoutsina">登出新浪</string>
+    <string name="umeng_loginqq">登陆QQ</string>
+    <string name="umeng_logoutqq">登出QQ</string>
+    <string name="umeng_loginqzone">登陆QQ空间</string>
+    <string name="umeng_logoutzone">登出QQ空间</string>
+    <string name="umeng_customlogin">自定义登陆</string>
+
+    <string name="umeng_addfriend">添加好友</string>
+    <string name="umeng_getfriendlist">获取好友列表</string>
+
+    <string name="umeng_commentmodular">评论模块</string>
+    <string name="umeng_getcommentlist">获取评论列表</string>
+    <string name="umeng_sendcomment">发出评论</string>
+
+    <string name="action_settings">设置</string>
+    <string name="actionbar_activity_not_found">Failed to open intent...</string>
+    <string name="share_by_weixin">微信分享</string>
+    <string name="share_by_qq">QQ分享</string>
+    <string name="share_by_yixin">易信分享</string>
+    <string name="shake_share">注册摇一摇截图（分享）</string>
+    <string name="shake_openshare">注册摇一摇（打开分享面板）</string>
+    <string name="shake_scrshot">注册摇一摇（截图）</string>
+    <string name="take_scrshot">直接截图</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="stop">停止</string>
+    <string name="quit">退出</string>
+    <string name="video_start_time">00:00</string>
+    <string name="goto_video">摇一摇视频截图Activity</string>
+    <string name="goto_game">游戏Activity</string>
+    <string name="goto_common">普通Activity</string>
+    <string name="video">VideoActivity</string>
+    <string name="game">GameActivity</string>
+    <string name="common">CommonActivity</string>
+    <string name="back">返回</string>
+    <string name="goto_facebook">添加Facebook分享</string>
+    <string name="fb_login">Facebook登录</string>
+    <string name="fb_logout">Facebook注销</string>
+    <string name="fb_share">Facebook分享</string>
+    <string name="laiwang_share">来往分享</string>
+    <string name="instagram_share">Instagram分享</string>
+    <string name="pocket_share">Pocket分享</string>
+    <string name="linkedin_share">LinkedIn分享</string>
+    <string name="foursquare_share">FourSquare分享</string>
+    <string name="ynote_share">有道云笔记分享</string>
+    <string name="evernote_share">印象笔记分享</string>
+    <string name="pinterest_share">Pinterest分享</string>
+    <string name="custom_platform_share">自定义平台分享</string>
+    <string name="login_sina">登录（新浪微博）</string>
+    <string name="logout_sina">注销登录（新浪微博）</string>
+    <string name="login_qq">登录（QQ）</string>
+    <string name="logout_qq">注销登录（QQ）</string>
+    <string name="login_qzone">登录（QQ空间）</string>
+    <string name="logout_qzone">注销登录（QQ空间）</string>
+    <string name="whatsapp_share">whatsapp分享</string>
+    <string name="line_share">line分享</string>
+    <string name="tumblr_share">tumblr分享</string>
+    <string name="kakao_share">Kakao Talk分享</string>
+    <string name="flickr_share">flickr分享</string>
+    <string name="fb_app_id">567261760019884</string>
+    <string name="photo_post">Photo Post</string>
+    <string name="success">Success</string>
+    <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
+    <string name="error">Error</string>
+    <string name="status_update">Updating Facebook status at </string>
+    <string name="ok">OK</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
+    <string name="facebook_app_id">487692214752558</string>
+</resources>

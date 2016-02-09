@@ -1,0 +1,5 @@
+ALTER TABLE feeditem ADD COLUMN isfriends INTEGER;
+ALTER TABLE feeditem ADD COLUMN iscollected INTEGER;
+ALTER TABLE feeditem ADD COLUMN  isnormal INTEGER;
+ALTER TABLE feeditem ADD COLUMN  recommended INTEGER;
+ALTER TABLE feeditem ADD COLUMN isnearby INTEGER;

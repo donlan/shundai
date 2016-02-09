@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000" >
+
+    <LinearLayout
+        android:background="@color/md_grey_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/layout_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true" >
+
+            <TextView
+                style="@style/Smile.TextView._Black"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/umeng_comm_camera"
+                android:textColor="@color/md_grey_800"
+                android:gravity="center"
+                android:text="@string/pop_photo" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true" >
+
+            <TextView
+                style="@style/Smile.TextView._Black"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:drawablePadding="20dp"
+                android:gravity="center"
+                android:drawableLeft="@drawable/umeng_comm_photo"
+                android:text="@string/pop_choose" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

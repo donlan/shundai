@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_bar" />
+
+
+    <dong.lan.shundai.view.EmoticonsEditText
+        android:id="@+id/edit_publish"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/md_white_1000"
+        android:gravity="start"
+        android:hint="写帮忙..."
+        android:imeOptions="flagNoExtractUi"
+        android:minHeight="@dimen/tab_padding_left_right"
+        android:padding="5dp"
+        android:paddingTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_grey_300"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <RadioGroup
+            android:id="@+id/radiogroup_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <RadioButton
+                android:id="@+id/radio_ren"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length"
+                android:background="@drawable/circle_radio_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/ren"
+                android:textColor="@color/md_white_1000" />
+
+            <RadioButton
+                android:id="@+id/radio_wu"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/circle_radio_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/wu"
+                android:textColor="@color/md_white_1000" />
+
+            <RadioButton
+                android:id="@+id/radio_qita"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length"
+                android:background="@drawable/circle_radio_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/qita"
+                android:textColor="@color/md_white_1000" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/add_emo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_mood_emotion4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_emo"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/md_grey_300"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager_emo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

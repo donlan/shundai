@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="start"
+    android:orientation="vertical"
+    android:background="@drawable/pop_bg"
+    >
+
+    <TextView
+        android:gravity="center"
+        android:text="情感状态"
+        android:textSize="20sp"
+        android:textColor="@color/md_grey_900"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <RadioGroup
+        android:layout_marginTop="50dp"
+       android:gravity="center_horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="140dp"
+       android:orientation="horizontal"
+       >
+
+            <RadioButton
+                android:textSize="@dimen/text_size_medium"
+                android:checked="true"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/radiobutton_bg"
+                android:text="单身"
+                android:id="@+id/state_single"
+                android:textColor="@color/md_white_1000"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length" />
+            <RadioButton
+                android:textSize="@dimen/text_size_medium"
+                android:gravity="center"
+                android:button="@null"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/radiobutton_bg"
+                android:text="已婚"
+                android:id="@+id/state_married"
+                style="@style/padding"
+                android:textColor="@color/md_white_1000"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length" />
+            <RadioButton
+                android:textSize="@dimen/text_size_medium"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/radiobutton_bg"
+                android:text="交友"
+                android:id="@+id/state_friend"
+                style="@style/padding"
+                android:textColor="@color/md_white_1000"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length" />
+            <RadioButton
+                android:textSize="@dimen/text_size_medium"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/radiobutton_bg"
+                android:text="保密"
+                android:id="@+id/state_secret"
+                style="@style/padding"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/md_white_1000"
+                android:layout_width="@dimen/radio_length"
+                android:layout_height="@dimen/radio_length" />
+
+   </RadioGroup>
+    <TextView
+        android:textColor="@color/md_white_1000"
+        android:textSize="18sp"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:background="@drawable/circle_rect_light_orange"
+        android:id="@+id/affective_ok"
+        android:text="完成"
+        style="@style/padding"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/normal_ba"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textSize="@dimen/test_size_default_div"
+                    android:text="求带"
+                    android:layout_weight="1"
+                    android:background="@drawable/help_pager_button"
+                    android:textColor="@color/base_color_text_white"
+                    android:gravity="center"
+                    android:id="@+id/need_for_help"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textIsSelectable="true" />
+
+                <View
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#aaeeeeee"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:layout_marginLeft="1dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textSize="@dimen/test_size_default_div"
+                    android:text="帮带"
+                    android:background="@drawable/help_pager_button"
+                    android:layout_weight="1"
+                    android:textColor="@color/base_color_text_white"
+                    android:gravity="center"
+                    android:id="@+id/offer_help"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/bar_near_dialog"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableRight="@drawable/search_white"
+                    />
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/activity_near_people" />
+
+
+</LinearLayout>

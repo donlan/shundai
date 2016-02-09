@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/normal_bg_dark"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:id="@+id/action_bar_parent"
+    >
+    <TextView
+        android:singleLine="true"
+        android:gravity="center"
+        android:text="@string/wu"
+        android:id="@+id/title_bar"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_gravity="left"
+        android:drawableRight="@drawable/bar_left"
+        android:id="@+id/back_forward"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:minWidth="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/more_dual"
+        android:gravity="center"
+        android:textSize="@dimen/test_size_default"
+        android:textStyle="bold"
+        android:textColor="@color/md_white_1000"
+        android:id="@+id/bar_right"
+        android:minWidth="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</FrameLayout>

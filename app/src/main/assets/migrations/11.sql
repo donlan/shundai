@@ -1,0 +1,2 @@
+ALTER TABLE feeditem ADD COLUMN ishot INTEGER;
+

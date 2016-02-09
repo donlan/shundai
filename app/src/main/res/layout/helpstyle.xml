@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_style"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_bar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/helpPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        android:persistentDrawingCache="animation">
+
+    </android.support.v4.view.ViewPager>
+
+    <CheckBox
+        android:id="@+id/pagerChange"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="12dp"
+        android:background="@drawable/pager_change_bg"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center" />
+</FrameLayout>

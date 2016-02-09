@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_300"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/normal_ba"
+        android:gravity="center|start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="重置密码"
+            android:textColor="@color/md_white_1000" />
+
+        <TextView
+            android:id="@+id/img_missingPop"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:drawableLeft="@drawable/bar_left" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/md_white_1000"
+        android:id="@+id/getResetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+
+            <EditText
+                android:drawablePadding="12dp"
+                android:drawableLeft="@drawable/login_icon_account"
+                android:id="@+id/reset_username"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="账号"
+                android:background="@null"
+                android:paddingBottom="8dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="8dp" />
+
+            <EditText
+                android:drawablePadding="12dp"
+                android:drawableLeft="@drawable/mobile"
+                android:id="@+id/reset_phoneNum"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="手机号码"
+                android:background="@null"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingBottom="8dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="8dp" />
+
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="验证码"
+                android:textSize="@dimen/test_size_default"
+                />
+
+            <EditText
+                android:id="@+id/reset_check_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="6"
+                android:layout_weight="1"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/getResetCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@color/normal_bg_three"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:text="@string/getvernum"
+                android:textColor="@color/md_grey_100"
+                android:textSize="@dimen/test_size_default" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ResetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical">
+
+        <EditText
+            android:drawablePadding="12dp"
+            android:drawableLeft="@drawable/login_icon_password"
+            android:id="@+id/reset_password"
+            style="@style/Register_Edit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:paddingBottom="8dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="8dp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/md_grey_500" />
+
+        <EditText
+            android:drawablePadding="12dp"
+            android:drawableLeft="@drawable/login_icon_password"
+            android:id="@+id/verify_reset_pass"
+            style="@style/Register_Edit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/login_email"
+            android:inputType="textPassword"
+            android:paddingBottom="8dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/VerifyCode"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/circle_rect_with_main"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="验证"
+        android:textColor="@color/md_white_1000"
+        android:textSize="@dimen/test_size_default" />
+
+</LinearLayout>

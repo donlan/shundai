@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start">
+
+    <LinearLayout
+        android:background="@drawable/draw_bg_top"
+        android:id="@+id/home_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_myInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/headPortrait"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/default_head" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/my_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="#00ffffff"
+                    android:gravity="center"
+                    android:text="昵称"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/my_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/age_bg"
+                        android:gravity="center"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/my_constellation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/xingzuo_bg"
+                        android:gravity="center"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+                    <TextView
+
+                        android:id="@+id/my_honest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/honest_bg"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/my_meili"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/meili_bg"
+                        android:gravity="center"
+                        android:minWidth="30dp"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/my_trends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:text="个性签名"
+            android:textColor="@color/md_grey_800" />
+    </LinearLayout>
+<FrameLayout
+    android:layout_below="@id/home_top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/draw_bg_bottom"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/my_seek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="54dp"
+                android:layout_marginRight="54dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/test1"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="求带"
+                android:textColor="@color/slide_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/my_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="54dp"
+                android:layout_marginRight="54dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/give_help"
+                android:drawablePadding="28dp"
+                android:gravity="center_vertical"
+                android:text="帮带"
+                android:textColor="@color/slide_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/my_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="54dp"
+                android:layout_marginRight="54dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/all_city"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="全国"
+                android:textColor="@color/slide_text_color"
+                android:textSize="14sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/my_recent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="52dp"
+                    android:layout_marginRight="52dp"
+                    android:layout_marginTop="8dp"
+                    android:drawableLeft="@drawable/chat"
+                    android:drawablePadding="14dp"
+                    android:gravity="center"
+                    android:text="会话"
+                    android:textColor="@color/slide_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="130dp"
+                    android:id="@+id/msg_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/new_tip"
+                    android:textColor="@color/slide_text_color"
+                    android:textSize="8sp"
+                    android:visibility="gone"
+                    />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/my_near"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/near"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="附近"
+                android:textColor="@color/slide_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/my_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/msg"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="我的消息"
+                android:textColor="@color/slide_text_color" />
+
+
+            <TextView
+                android:id="@+id/my_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/fridends"
+                android:drawablePadding="14dp"
+                android:gravity="center_vertical"
+                android:text="我的好友"
+                android:textColor="@color/slide_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/my_community"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/forum"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="社区"
+            android:textColor="@color/slide_text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/my_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/setting"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="设置"
+            android:textColor="@color/slide_text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/share_app"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/share"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="分享"
+            android:textColor="@color/slide_text_color" />
+    </LinearLayout>
+</FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,4 @@
+ALTER TABLE comment ADD COLUMN likeCount INTEGER;
+ALTER TABLE comment ADD COLUMN liked INTEGER;
+ALTER TABLE feeditem ADD COLUMN title TEXT;
+ALTER TABLE imageitem ADD COLUMN commentId TEXT;

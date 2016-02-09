@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    >
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:background="@color/normal_ba"
+    android:layout_height="?attr/actionBarSize">
+    <TextView
+        android:text="筛选附近的人"
+        android:paddingLeft="?attr/actionBarSize"
+        android:paddingRight="?attr/actionBarSize"
+        android:textSize="@dimen/text_big18_size"
+        android:textColor="@color/md_white_1000"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+    <TextView
+        android:id="@+id/near_search_back"
+        android:text="取消"
+        android:textSize="@dimen/text_big16_size"
+        android:textColor="@color/md_white_1000"
+        android:gravity="center"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize" />
+    <TextView
+        android:id="@+id/near_search_done"
+        android:layout_gravity="end"
+        android:text="完成"
+        android:textSize="@dimen/text_big16_size"
+        android:textColor="@color/md_white_1000"
+        android:gravity="center"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize" />
+</FrameLayout>
+    <RadioGroup
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/near_search_male"
+            android:background="@drawable/check_bg"
+            android:gravity="center"
+            android:text="男"
+            android:button="@null"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/near_search_female"
+            android:background="@drawable/check_bg"
+            android:gravity="center"
+            android:text="女"
+            android:button="@null"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/near_search_all"
+            android:background="@drawable/check_bg"
+            android:gravity="center"
+            android:text="全部"
+            android:checked="true"
+            android:button="@null"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="距离"
+                android:textSize="@dimen/text_big18_size"
+                android:textColor="@color/md_grey_800" />
+
+            <NumberPicker
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                android:id="@+id/kiloPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="年龄"
+                android:textSize="@dimen/text_big18_size"
+                android:textColor="@color/md_grey_800" />
+
+            <NumberPicker
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                android:id="@+id/agePiker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="诚信"
+                android:textSize="@dimen/text_big18_size"
+                android:textColor="@color/md_grey_800" />
+
+            <NumberPicker
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                android:id="@+id/honestPiker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="魅力"
+                android:textSize="@dimen/text_big18_size"
+                android:textColor="@color/md_grey_800" />
+
+            <NumberPicker
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                android:id="@+id/MeiLiPiker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="星座"
+                android:textSize="@dimen/text_big18_size"
+                android:textColor="@color/md_grey_800" />
+
+            <NumberPicker
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                android:id="@+id/xingZuoPiker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
