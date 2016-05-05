@@ -35,6 +35,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sina.weibo.sdk.utils.NetworkHelper;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.comm.core.beans.CommUser;
 import com.umeng.comm.core.login.LoginListener;
@@ -252,7 +253,7 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
                     .withText("顺带，见上一面就有可能")
                     .withTitle("顺带")
                     .withTargetUrl(Config.APPWEBSITE)
-                            //.withMedia(new UMImage(NearPeopleActivity.this, BitmapFactory.decodeResource(getResources(), R.drawable.logo2)))
+                    //.withMedia(new UMImage(NearPeopleActivity.this, BitmapFactory.decodeResource(getResources(), R.drawable.logo2)))
                     .setShareboardclickCallback(shareBoardlistener)
                     .share();
         }
@@ -265,7 +266,7 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
                 .withText("顺带，见上一面就有可能")
                 .withTitle("顺带")
                 .withTargetUrl(Config.APPWEBSITE)
-                        //.withMedia(new UMImage(this,BitmapFactory.decodeResource(getResources(), R.drawable.logo2)))
+                //.withMedia(new UMImage(this,BitmapFactory.decodeResource(getResources(), R.drawable.logo2)))
                 .setShareboardclickCallback(shareBoardlistener)
                 .setListenerList(umShareListener, umShareListener)
                 .open();
@@ -308,6 +309,10 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
     ProgressDialog progress;
 
     private void initNearByList(final int isUpdate, List<BmobQuery<User>> queries) {
+        if(!NetworkHelper.isNetworkAvailable(this)){
+            ShowToast("网络不可用");
+            return;
+        }
         if (point != null) {
             if (isUpdate == 0 && progress == null) {
                 progress = new ProgressDialog(NearPeopleActivity.this);
@@ -389,6 +394,10 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
      * 查询更多
      */
     private void queryMoreNearList() {
+        if(!NetworkHelper.isNetworkAvailable(this)){
+            ShowToast("网络不可用");
+            return;
+        }
         BmobQuery<User> query = new BmobQuery<>();
         if (queries == null) {
             queries = new ArrayList<>();
@@ -745,70 +754,57 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
     public class MyLocationListener implements BDLocationListener {
 
         @Override
-        public void onReceiveLocation(final BDLocation bdLocation) {
+        public void onReceiveLocation(BDLocation bdLocation) {
             if (bdLocation != null && mLocationClient != null) {
-                loc = bdLocation.getCity().trim();
-                if (!loc.equals("") && !loc.equals("null")) {
-                    point = new BmobGeoPoint(bdLocation.getLongitude(), bdLocation.getLatitude());
-                    User user = userManager.getCurrentUser(User.class);
-                    user.setCity(loc);
-                    user.setLocation(point);
-                    user.update(getBaseContext(), new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            geoPreference.edit().remove("Latitude").apply();
-                            geoPreference.edit().remove("Longitude").apply();
-                            geoPreference.edit().putString("Latitude", bdLocation.getLatitude() + "").apply();
-                            geoPreference.edit().putString("Longitude", bdLocation.getLongitude() + "").apply();
+
+                loc = bdLocation.getCity();
+                if (loc == null)
+                    return;
+                final double lat = bdLocation.getLatitude();
+                final double lng = bdLocation.getLongitude();
+                point = new BmobGeoPoint(bdLocation.getLongitude(), bdLocation.getLatitude());
+                User user = userManager.getCurrentUser(User.class);
+                user.setCity(loc);
+                user.setLocation(point);
+                user.update(getBaseContext(), new UpdateListener() {
+                    @Override
+                    public void onSuccess() {
+                        geoPreference.edit().remove("Latitude").apply();
+                        geoPreference.edit().remove("Longitude").apply();
+                        geoPreference.edit().putString("Latitude", String.valueOf(lat)).apply();
+                        geoPreference.edit().putString("Longitude", String.valueOf(lng)).apply();
 
 
-                            if (BuildConfig.DEBUG) Log.d("MyLocationListener", "更新地理位置成功   " + loc);
-                            option.setScanSpan(1800000);
-                            if (mLocationClient != null)
-                                mLocationClient.setLocOption(option);// 使用设置
-                            initNearByList(0, null);
-                            if (!once) {
-                                BmobQuery<UserCity> query = new BmobQuery<UserCity>();
-                                query.addWhereEqualTo("City", loc);
-                                query.findObjects(getBaseContext(), new FindListener<UserCity>() {
-                                    @Override
-                                    public void onSuccess(List<UserCity> list) {
-                                        if (!list.isEmpty()) {
-                                            if (list.get(0).getCount() != null)
-                                                Count = list.get(0).getCount();
-                                            if (Count >= 1) {
-                                                UserCity userCity = new UserCity();
-                                                userCity.setCity(loc);
-                                                userCity.setObjectId(list.get(0).getObjectId());
-                                                Count++;
-                                                userCity.setCount(Count);
-                                                userCity.update(getBaseContext(), new UpdateListener() {
-                                                    @Override
-                                                    public void onSuccess() {
-                                                        once = true;
-                                                    }
+                        if (BuildConfig.DEBUG) Log.d("MyLocationListener", "更新地理位置成功   " + loc);
+                        option.setScanSpan(1800000);
+                        if (mLocationClient != null)
+                            mLocationClient.setLocOption(option);// 使用设置
+                        initNearByList(0, null);
+                        if (!once) {
+                            BmobQuery<UserCity> query = new BmobQuery<UserCity>();
+                            query.addWhereEqualTo("City", loc);
+                            query.findObjects(getBaseContext(), new FindListener<UserCity>() {
+                                @Override
+                                public void onSuccess(List<UserCity> list) {
+                                    if (!list.isEmpty()) {
+                                        if (list.get(0).getCount() != null)
+                                            Count = list.get(0).getCount();
+                                        if (Count >= 1) {
+                                            UserCity userCity = new UserCity();
+                                            userCity.setCity(loc);
+                                            userCity.setObjectId(list.get(0).getObjectId());
+                                            Count++;
+                                            userCity.setCount(Count);
+                                            userCity.update(getBaseContext(), new UpdateListener() {
+                                                @Override
+                                                public void onSuccess() {
+                                                    once = true;
+                                                }
 
-                                                    @Override
-                                                    public void onFailure(int i, String s) {
-                                                    }
-                                                });
-                                            } else {
-                                                UserCity userCity = new UserCity();
-                                                userCity.setCity(loc);
-                                                userCity.setCount(1);
-                                                userCity.save(getBaseContext(), new SaveListener() {
-                                                    @Override
-                                                    public void onSuccess() {
-
-                                                        System.out.println("City saved");
-                                                        once = true;
-                                                    }
-
-                                                    @Override
-                                                    public void onFailure(int i, String s) {
-                                                    }
-                                                });
-                                            }
+                                                @Override
+                                                public void onFailure(int i, String s) {
+                                                }
+                                            });
                                         } else {
                                             UserCity userCity = new UserCity();
                                             userCity.setCity(loc);
@@ -816,6 +812,7 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
                                             userCity.save(getBaseContext(), new SaveListener() {
                                                 @Override
                                                 public void onSuccess() {
+
                                                     System.out.println("City saved");
                                                     once = true;
                                                 }
@@ -825,25 +822,40 @@ public class NearPeopleActivity extends BaseActivity implements XListView.IXList
                                                 }
                                             });
                                         }
-                                    }
+                                    } else {
+                                        UserCity userCity = new UserCity();
+                                        userCity.setCity(loc);
+                                        userCity.setCount(1);
+                                        userCity.save(getBaseContext(), new SaveListener() {
+                                            @Override
+                                            public void onSuccess() {
+                                                System.out.println("City saved");
+                                                once = true;
+                                            }
 
-                                    @Override
-                                    public void onError(int i, String s) {
+                                            @Override
+                                            public void onFailure(int i, String s) {
+                                            }
+                                        });
                                     }
-                                });
-                            }
-                        }
+                                }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            ShowToast("更新地理位置失败");
+                                @Override
+                                public void onError(int i, String s) {
+                                }
+                            });
                         }
-                    });
-                } else {
-                    LOC_TIME--;
-                    if (LOC_TIME < 0)
-                        stopLocListener();
-                }
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+                        ShowToast("更新地理位置失败");
+                    }
+                });
+            } else {
+                LOC_TIME--;
+                if (LOC_TIME < 0)
+                    stopLocListener();
             }
         }
     }
