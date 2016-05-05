@@ -441,14 +441,7 @@
                 <action android:name="org.agoo.android.intent.action.RECEIVE" />
             </intent-filter>
         </receiver>
-        <receiver
-            android:name="com.umeng.message.ElectionReceiver"
-            android:process=":push">
-            <intent-filter>
-                <action android:name="org.agoo.android.intent.action.ELECTION_RESULT_V4" />
-                <category android:name="umeng" />
-            </intent-filter>
-        </receiver>
+
 
 
 
