@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants" >
 
-    <com.umeng.commm.ui.widgets.SquareImageView
+    <com.umeng.comm.ui.widgets.SquareImageView
         android:id="@+id/umeng_comm_iv_photo_lpsi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

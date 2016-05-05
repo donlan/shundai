@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.umeng.commm.ui.widgets.SquareImageView
+    <com.umeng.comm.ui.widgets.SquareImageView
         android:id="@+id/umeng_comm_image_selected"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
