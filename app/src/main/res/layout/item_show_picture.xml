@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fram"
-    xmlns:app="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -9,7 +8,7 @@
         android:id="@+id/photoview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        app:scaleType="fitCenter" />
+        android:scaleType="fitCenter" />
 
     <RelativeLayout
         android:layout_width="fill_parent"

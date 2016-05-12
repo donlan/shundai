@@ -132,7 +132,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
     private String state;
     private List<String> photos;
     private int index = 0;
-    private int loop=0;
+    private int loop = 0;
     private DecimalFormat decimalFormat;
 
     @Override
@@ -149,9 +149,8 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
         decimalFormat = new DecimalFormat("######0.00");
         from = getIntent().getStringExtra("from");
         username = getIntent().getStringExtra("username");
-        if(from.equals("me") && BmobUser.getCurrentUser(this,User.class).getConstllation().equals("未知"))
-        {
-            startAnimActivity(new Intent(this,BirthActivity.class));
+        if (from.equals("me") && BmobUser.getCurrentUser(this, User.class).getConstllation().equals("未知")) {
+            startAnimActivity(new Intent(this, BirthActivity.class));
         }
         final android.os.Handler handler = new android.os.Handler() {
             @Override
@@ -159,14 +158,13 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
                 switch (msg.what) {
                     case 0x111:
-                        if(photos!=null)
-                        {
+                        if (photos != null) {
                             ImageLoader.getInstance().displayImage(photos.get(loop), wall_photo1);
                             ObjectAnimator.ofFloat(wall_photo1, "scaleX", 1f, 1.6f, 1f).setDuration(AnimTime).start();
                             ObjectAnimator.ofFloat(wall_photo1, "scaleY", 1f, 1.6f, 1f).setDuration(AnimTime).start();
                             loop++;
-                            if(loop>index)
-                                loop=0;
+                            if (loop > index)
+                                loop = 0;
                             break;
                         }
                 }
@@ -499,35 +497,35 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
     }
 
     public void UpdateSeeCount(final User u) {
-        BmobQuery<WallPhoto> q = new BmobQuery<WallPhoto>();
-        q.addWhereEqualTo("user", u);
-        q.findObjects(getBaseContext(), new FindListener<WallPhoto>() {
-            @Override
-            public void onSuccess(List<WallPhoto> list) {
-                if (!list.isEmpty()) {
-                    String id = list.get(0).getObjectId();
-                    WallPhoto wallPhoto = new WallPhoto();
-                    wallPhoto.setUser(u);
-                    wallPhoto.setSeeCount(list.get(0) == null ? 1 : list.get(0).getSeeCount() + 1);
-                    wallPhoto.setObjectId(id);
-                    wallPhoto.update(SetMyInfoActivity.this, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
+                BmobQuery<WallPhoto> q = new BmobQuery<WallPhoto>();
+                q.addWhereEqualTo("user", u);
+                q.findObjects(SetMyInfoActivity.this, new FindListener<WallPhoto>() {
+                    @Override
+                    public void onSuccess(List<WallPhoto> list) {
+                        if (!list.isEmpty()) {
+                            String id = list.get(0).getObjectId();
+                            WallPhoto wallPhoto = new WallPhoto();
+                            wallPhoto.setUser(u);
+                            wallPhoto.setSeeCount(list.get(0) == null || list.get(0).getSeeCount()==null ? 1 : list.get(0).getSeeCount() + 1);
+                            wallPhoto.setObjectId(id);
+                            wallPhoto.update(SetMyInfoActivity.this, new UpdateListener() {
+                                @Override
+                                public void onSuccess() {
+                                }
+
+                                @Override
+                                public void onFailure(int i, String s) {
+                                }
+                            });
                         }
+                    }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                        }
-                    });
-                }
-            }
+                    @Override
+                    public void onError(int i, String s) {
+                        System.out.println(s);
+                    }
 
-            @Override
-            public void onError(int i, String s) {
-                System.out.println(s);
-            }
-
-        });
+                });
     }
 
     private void AddHomeCom(final User user1, String content) {
@@ -588,8 +586,8 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
             @Override
             public void onSuccess() {
 
-                String h = String.valueOf((Double.parseDouble(to_user.getHonest())-0.4));
-                String m = String.valueOf(( Double.parseDouble(to_user.getMeili())-0.4));
+                String h = String.valueOf((Double.parseDouble(to_user.getHonest()) - 0.4));
+                String m = String.valueOf((Double.parseDouble(to_user.getMeili()) - 0.4));
                 UserManager.updateOtherSuser(SetMyInfoActivity.this, user, m, h);
                 userManager.addBlack(to_user.getUsername(), new UpdateListener() {
                     @Override
@@ -618,13 +616,14 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(SetMyInfoActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SetMyInfoActivity.this, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onCancel(SHARE_MEDIA platform) {
         }
     };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -640,7 +639,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                 AnimUitls.BunttonAnim(v, 300);
                 new ShareAction(this).setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.SMS, SHARE_MEDIA.TENCENT)
                         .setContentList(new ShareContent(), new ShareContent())
-                        .setListenerList(umShareListener,umShareListener)
+                        .setListenerList(umShareListener, umShareListener)
                         .open();
                 break;
             case R.id.affective_state:
@@ -908,7 +907,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
     public String filePath = "";
 
     private void showAffectivePop() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.alert);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.alert);
         View view = LayoutInflater.from(this).inflate(R.layout.affective_state_pop, null);
         final RadioButton state_single = (RadioButton) view.findViewById(R.id.state_single);
         final RadioButton state_married = (RadioButton) view.findViewById(R.id.state_married);
@@ -948,11 +947,11 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                         }
                     });
                 }
-               dialog.dismiss();
+                dialog.dismiss();
             }
         });
         builder.setView(view);
-        dialog=builder.show();
+        dialog = builder.show();
 
     }
 
@@ -1150,12 +1149,12 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
         });
     }
 
-    private void deleteOldAvater(String oldAvater)
-    {
+    private void deleteOldAvater(String oldAvater) {
         BmobFile file = new BmobFile();
         file.setUrl(oldAvater);
         file.delete(this);
     }
+
     private void updateUserAvatar(final String url) {
         User u = new User();
         u.setAvatar(url);
@@ -1222,13 +1221,13 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                 public void onSuccess(List<WallPhoto> object) {
                     if (!object.isEmpty()) {
                         WallPhoto wallPhoto = object.get(0);
-                        seeCount.setText(wallPhoto.getSeeCount() + "人看过");
-                        commentCount.setText(wallPhoto.getComCount() + "人评论");
+                        seeCount.setText((wallPhoto==null || wallPhoto.getSeeCount()==null ? 1: wallPhoto.getSeeCount() )+ "人看过");
+                        commentCount.setText((wallPhoto==null || wallPhoto.getComCount()==null ? 1: wallPhoto.getComCount() ) + "人评论");
                         photos = wallPhoto.getPhotos();
-                        if(photos==null)
-                        index=0;
+                        if (photos == null)
+                            index = 0;
                         else
-                            index=photos.size()-1;
+                            index = photos.size() - 1;
                     }
 
                 }
@@ -1252,8 +1251,8 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                             index = 0;
                         else
                             index = photos.size() - 1;
-                        seeCount.setText(wallPhoto.getSeeCount() + "人看过");
-                        commentCount.setText(wallPhoto.getComCount() + "人评论");
+                        seeCount.setText((wallPhoto==null || wallPhoto.getSeeCount()==null ? 1: wallPhoto.getSeeCount() )+ "人看过");
+                        commentCount.setText((wallPhoto==null || wallPhoto.getComCount()==null ? 1: wallPhoto.getComCount() ) + "人评论");
                         if (wallPhoto.getDay() == day) {
                             clickZAN.setText(object.get(0).getZan() + "");
                             zan_img.setImageDrawable(getResources().getDrawable(R.drawable.click_zan2));
@@ -1336,7 +1335,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                             WallPhoto wallPhoto = new WallPhoto();
                             wallPhoto.setUser(CurUser);
                             wallPhoto.setObjectId(id);
-                            wallPhoto.setIndex(index+1);
+                            wallPhoto.setIndex(index + 1);
                             wallPhoto.addUnique("photos", url);
                             wallPhoto.update(context, new UpdateListener() {
                                 @Override
@@ -1353,7 +1352,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
                         } else {
                             WallPhoto wallPhoto = new WallPhoto();
                             wallPhoto.setUser(CurUser);
-                            wallPhoto.setIndex(index+1);
+                            wallPhoto.setIndex(index + 1);
                             wallPhoto.addUnique("photos", url);
                             wallPhoto.save(getBaseContext(), new SaveListener() {
                                 @Override
@@ -1407,7 +1406,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
     private void HomeComPop() {
         home = LayoutInflater.from(SetMyInfoActivity.this).inflate(R.layout.home_comment_pop, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.alert);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.alert);
         final EditText text = (EditText) home.findViewById(R.id.home_com_editText);
         TextView done = (TextView) home.findViewById(R.id.home_com_done);
         done.setOnClickListener(new OnClickListener() {
@@ -1439,9 +1438,6 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
         if (!from.equals("me"))
             runing = false;
     }
-
-
-
 
 
 }
