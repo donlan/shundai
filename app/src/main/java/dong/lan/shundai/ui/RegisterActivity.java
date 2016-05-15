@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -52,7 +52,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 
 
     Button btn_register;
-    EditText et_username, et_password, et_email, phoneNum, check_num;
+    EditText et_username, et_password, et_password_again, phoneNum, check_num;
     TextView random_check_num, agree;
     RadioButton female;
     private static String loc = "全国";
@@ -64,6 +64,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
     private String password;
     private int VER = 60;
     private boolean Click = false;
+    private boolean isOversea = false;  //是否是海外用户
+    private LinearLayout viewOfVerifyCode;
+    private LinearLayout viewOfPhone;
 
     @SuppressLint("MissingSuperCall")
     @Override
@@ -90,7 +93,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
                         VER = 60;
                         random_check_num.setBackgroundResource(R.color.normal_bg_three);
                         random_check_num.setTextColor(Color.WHITE);
-                        random_check_num.setText("获取验证码");
+                        random_check_num.setText(R.string.get_verify_code);
                         Click = false;
                     } else {
                         random_check_num.setBackgroundResource(R.color.md_grey_500);
@@ -111,18 +114,42 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
         }, 0, 1000);
         et_username = (EditText) findViewById(R.id.et_username);
         et_password = (EditText) findViewById(R.id.et_password);
-        et_email = (EditText) findViewById(R.id.et_email);
+        et_password_again = (EditText) findViewById(R.id.et_password_again);
         phoneNum = (EditText) findViewById(R.id.phoneNum);
         agree = (TextView) findViewById(R.id.use_agree);
         female = (RadioButton) findViewById(R.id.sex_female);
         agree.setOnClickListener(this);
         btn_register = (Button) findViewById(R.id.btn_register);
         random_check_num = (TextView) findViewById(R.id.random_check_num);
+        viewOfPhone = (LinearLayout) findViewById(R.id.view_phone);
+        viewOfVerifyCode = (LinearLayout) findViewById(R.id.view_verify_code);
+        TextView versionSwitcher = (TextView) findViewById(R.id.version_switcher);
+
+        versionSwitcher.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isOversea){
+                    viewOfVerifyCode.setVisibility(View.GONE);
+                    viewOfPhone.setVisibility(View.GONE);
+                    et_username.setHint("2-16 Character or Number");
+                    et_password.setHint("Password");
+                    et_password_again.setHint("Password");
+                    isOversea = true;
+                }else{
+                    viewOfVerifyCode.setVisibility(View.VISIBLE);
+                    viewOfPhone.setVisibility(View.VISIBLE);
+                    et_username.setHint(getString(R.string.register_username_tip_ch));
+                    et_password.setHint(getString(R.string.login_pwd));
+                    et_password_again.setHint(getString(R.string.login_pwd_again));
+                    isOversea = true;
+                }
+            }
+        });
         random_check_num.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isMobileNO(phoneNum.getText().toString().trim())) {
-                    ShowToast("请输入正确的手机号码");
+                    ShowToast(getString(R.string.please_input_a_ok_phone_number));
                 } else {
                     if (!Click) {
                         Click = true;
@@ -198,14 +225,14 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
     private void register() {
         name = et_username.getText().toString();
         password = et_password.getText().toString();
-        String pwd_again = et_email.getText().toString();
+        String pwd_again = et_password_again.getText().toString();
         phone = phoneNum.getText().toString().trim();
         if (TextUtils.isEmpty(name)) {
             ShowToast(R.string.toast_error_username_null);
             return;
         }
         if (name.length() < 2 || name.length() > 16) {
-            ShowToast("用户名长度为2-16个字母数字或汉字");
+            ShowToast(getString(R.string.register_username_tip_ch));
             return;
         }
         if (TextUtils.isEmpty(password)) {
@@ -217,11 +244,11 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
             return;
         }
         if (!goodPWD(password)) {
-            ShowToast("密码是字母与数字的组合");
+            ShowToast(getString(R.string.register_password_tip_ch));
             return;
         }
-        if (!isMobileNO(phone)) {
-            ShowToast("非法手机号码");
+        if (!isOversea && !isMobileNO(phone)) {
+            ShowToast(getString(R.string.illegal_phone_number));
             return;
         }
 
@@ -235,6 +262,109 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 
     }
 
+
+    private void registerAction(){
+        final ProgressDialog progress = new ProgressDialog(RegisterActivity.this);
+        progress.setMessage(getString(R.string.registing));
+        progress.setCanceledOnTouchOutside(false);
+        progress.show();
+        final User bu = new User();
+        bu.setUsername(name);
+        bu.setPassword(password);
+        bu.setTrends("");
+        bu.setAge("");
+        bu.setSex(female.isChecked());
+        bu.setConstllation("未知");
+        bu.setMeili("5.0");
+        bu.setHonest("5.0");
+        bu.setCity(loc);
+        if(!isOversea) {
+            bu.setMobilePhoneNumber(phone);
+            bu.setMobilePhoneNumberVerified(true);
+        }
+        bu.setDeviceType("android");
+        bu.setInstallId(BmobInstallation.getInstallationId(getBaseContext()));
+        bu.signUp(RegisterActivity.this, new SaveListener() {
+
+            @Override
+            public void onSuccess() {
+                SUser sUser = new SUser();
+                sUser.setUser(bu);
+                sUser.setHonest("5.0");
+                sUser.setMeiLi("5.0");
+                sUser.save(RegisterActivity.this);
+
+                /*
+                背景墙初始化
+                 */
+                WallPhoto wallPhoto = new WallPhoto();
+                wallPhoto.setUser(bu);
+                wallPhoto.setZan(0);
+                wallPhoto.setIndex(0);
+                wallPhoto.setComCount(0);
+                wallPhoto.setSeeCount(0);
+                wallPhoto.setDay(new Date().getDate() - 1);
+                wallPhoto.save(RegisterActivity.this);
+
+                progress.dismiss();
+                ShowToast(getString(R.string.start_your_shundai_time));
+                BmobQuery<UserCity> query = new BmobQuery<>();
+                query.addWhereEqualTo("City", loc);
+                query.findObjects(getBaseContext(), new FindListener<UserCity>() {
+                    @Override
+                    public void onSuccess(List<UserCity> list) {
+                        if (list.size() >= 1) {
+                            if (list.get(0).getCount() != null)
+                                Count = list.get(0).getCount();
+                           /*
+                           初始化用户城市数据
+                            */
+                            if (Count >= 1) {
+
+                                UserCity userCity = new UserCity();
+                                userCity.setCity(loc);
+                                userCity.setObjectId(list.get(0).getObjectId());
+                                Count++;
+                                userCity.setCount(Count);
+                                userCity.update(RegisterActivity.this);
+                            } else {
+                                UserCity userCity = new UserCity();
+                                userCity.setCity(loc);
+                                userCity.setCount(1);
+                                userCity.save(RegisterActivity.this);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+                    }
+                });
+                /*
+                生成最近浏览数据
+                 */
+                RecentlyCity recentlyCity = new RecentlyCity();
+                recentlyCity.setUsername(name);
+                recentlyCity.setCity(loc);
+                recentlyCity.setCount(1);
+                recentlyCity.save(RegisterActivity.this);
+
+                userManager.bindInstallationForRegister(bu.getUsername());
+                updateUserLocation();
+                sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
+                Intent intent = new Intent(RegisterActivity.this, NearPeopleActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(int arg0, String arg1) {
+                BmobLog.i(arg1);
+                ShowToast(getString(R.string.register_error,arg1));
+                progress.dismiss();
+            }
+        });
+    }
     /**
      * 请求短信验证码
      */
@@ -265,101 +395,13 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
     private void verifySmsCode() {
         String number = phoneNum.getText().toString();
         String code = check_num.getText().toString();
+        if(!isOversea){
         if (!TextUtils.isEmpty(number) && !TextUtils.isEmpty(code)) {
             cn.bmob.v3.BmobSMS.verifySmsCode(this, number, code, new VerifySMSCodeListener() {
                 @Override
                 public void done(cn.bmob.v3.exception.BmobException ex) {
                     if (ex == null) {//短信验证码已验证成功
-                        final ProgressDialog progress = new ProgressDialog(RegisterActivity.this);
-                        progress.setMessage("正在注册...");
-                        progress.setCanceledOnTouchOutside(false);
-                        progress.show();
-                        final User bu = new User();
-                        bu.setUsername(name);
-                        bu.setPassword(password);
-                        bu.setTrends("");
-                        bu.setAge("");
-                        bu.setSex(female.isChecked());
-                        bu.setConstllation("未知");
-                        bu.setMeili("5.0");
-                        bu.setHonest("5.0");
-                        bu.setCity(loc);
-                        bu.setMobilePhoneNumber(phone);
-                        bu.setMobilePhoneNumberVerified(true);
-                        bu.setDeviceType("android");
-                        bu.setInstallId(BmobInstallation.getInstallationId(getBaseContext()));
-                        bu.signUp(RegisterActivity.this, new SaveListener() {
-
-                            @Override
-                            public void onSuccess() {
-                                SUser sUser = new SUser();
-                                sUser.setUser(bu);
-                                sUser.setHonest("5.0");
-                                sUser.setMeiLi("5.0");
-                                sUser.save(RegisterActivity.this);
-
-                                WallPhoto wallPhoto = new WallPhoto();
-                                wallPhoto.setUser(bu);
-                                wallPhoto.setZan(0);
-                                wallPhoto.setIndex(0);
-                                wallPhoto.setComCount(0);
-                                wallPhoto.setSeeCount(0);
-                                wallPhoto.setDay(new Date().getDate() - 1);
-                                wallPhoto.save(RegisterActivity.this);
-
-                                progress.dismiss();
-                                ShowToast("开启你的顺带时光。。。");
-                                BmobQuery<UserCity> query = new BmobQuery<UserCity>();
-                                query.addWhereEqualTo("City", loc);
-                                query.findObjects(getBaseContext(), new FindListener<UserCity>() {
-                                    @Override
-                                    public void onSuccess(List<UserCity> list) {
-                                        if (list.size() >= 1) {
-                                            if (list.get(0).getCount() != null)
-                                                Count = list.get(0).getCount();
-                                            if (Count >= 1) {
-
-                                                UserCity userCity = new UserCity();
-                                                userCity.setCity(loc);
-                                                userCity.setObjectId(list.get(0).getObjectId());
-                                                Count++;
-                                                userCity.setCount(Count);
-                                                userCity.update(RegisterActivity.this);
-                                            } else {
-                                                UserCity userCity = new UserCity();
-                                                userCity.setCity(loc);
-                                                userCity.setCount(1);
-                                                userCity.save(RegisterActivity.this);
-                                            }
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(int i, String s) {
-                                    }
-                                });
-                                RecentlyCity recentlyCity = new RecentlyCity();
-                                recentlyCity.setUsername(name);
-                                recentlyCity.setCity(loc);
-                                recentlyCity.setCount(1);
-                                recentlyCity.save(RegisterActivity.this);
-
-                                userManager.bindInstallationForRegister(bu.getUsername());
-                                updateUserLocation();
-                                sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
-                                Intent intent = new Intent(RegisterActivity.this, NearPeopleActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-
-                            @Override
-                            public void onFailure(int arg0, String arg1) {
-                                // TODO Auto-generated method stub
-                                BmobLog.i(arg1);
-                                ShowToast("注册失败:" + arg1);
-                                progress.dismiss();
-                            }
-                        });
+                        registerAction();
                     } else {
                         if (ex.getMessage().contains("already"))
                             ShowToast("此手机号码已经绑定有顺带账号了，请更换其他号码");
@@ -370,6 +412,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
             });
         } else {
             ShowToast("请输入手机号和验证码");
+        }}else{
+            registerAction();
         }
     }
 
@@ -378,9 +422,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
         switch (view.getId()) {
             case R.id.use_agree:
                 new AlertDialog.Builder(RegisterActivity.this)
-                        .setTitle("使用条款")
+                        .setTitle(getString(R.string.using_pro))
                         .setMessage(R.string.agreement)
-                        .setNeutralButton("返回", null)
+                        .setNeutralButton(getString(R.string.back), null)
                         .create()
                         .show();
                 break;
@@ -398,7 +442,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
                 if (!loc.equals(""))
                     stopListener();
             } else {
-                Toast.makeText(getBaseContext(), "无法定位", Toast.LENGTH_SHORT).show();
+                ShowToast("无法定位");
             }
         }
     }
