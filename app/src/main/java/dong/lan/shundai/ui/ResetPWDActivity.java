@@ -22,6 +22,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.ResetPasswordByCodeListener;
+import cn.bmob.v3.listener.ResetPasswordByEmailListener;
 import cn.bmob.v3.listener.SaveListener;
 import dong.lan.shundai.R;
 import dong.lan.shundai.bean.User;
@@ -32,11 +33,13 @@ import dong.lan.shundai.bean.User;
 public class ResetPWDActivity extends BaseActivity {
     private boolean Click = false;
     private int VER = 60;
+    private boolean isMail = false;//is use email to reset password
     private Handler handler;
     LinearLayout getResetLayout;
     LinearLayout ResetLayout;
-    EditText name, phone, reset_code, pass, ver_pass;
-    TextView getSmsCode, done;
+    LinearLayout emailLayout;
+    EditText name, phone, reset_code, pass, ver_pass,email;
+    TextView getSmsCode, done,verifySwitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class ResetPWDActivity extends BaseActivity {
         ver_pass = (EditText) findViewById(R.id.verify_reset_pass);
         getSmsCode = (TextView) findViewById(R.id.getResetCode);
         done = (TextView) findViewById(R.id.VerifyCode);
+        verifySwitcher = (TextView) findViewById(R.id.verify_switcher);
+        emailLayout = (LinearLayout) findViewById(R.id.email_layout);
         findViewById(R.id.img_missingPop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,34 +69,68 @@ public class ResetPWDActivity extends BaseActivity {
                 checkUser(name.getText().toString(), phone.getText().toString());
             }
         });
+        verifySwitcher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isMail){
+                  isMail = false;
+                    getResetLayout.setVisibility(View.VISIBLE);
+                    ResetLayout.setVisibility(View.VISIBLE);
+                    emailLayout.setVisibility(View.GONE);
+                    done.setText("验证");
+                }else{
+                    isMail =true;
+                    getResetLayout.setVisibility(View.GONE);
+                    ResetLayout.setVisibility(View.GONE);
+                    emailLayout.setVisibility(View.VISIBLE);
+                    done.setText("Send e-mail");
+                }
+            }
+        });
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (done.getText().toString()) {
-                    case "验证":
-                        verifySmsCode();
-                        break;
-                    case "设置密码并登陆":
-                        if (!pass.getText().toString().equals(ver_pass.getText().toString())) {
-                            ShowToast("两次密码不一致，请重新输入密码");
-                            return;
-                        } else {
-                            BmobUser.resetPasswordBySMSCode(ResetPWDActivity.this, reset_code.getText().toString(), pass.getText().toString(), new ResetPasswordByCodeListener() {
-                                @Override
-                                public void done(BmobException ex) {
-                                    if (ex == null) {
-                                        ShowToast("密码重置成功");
-                                        resetLogin(name.getText().toString(), ver_pass.getText().toString());
-                                        ResetLayout.setVisibility(View.VISIBLE);
-                                        getSmsCode.setVisibility(View.GONE);
-                                    } else {
-                                        ShowToast("重置失败：错误代码 =" + ex.getErrorCode() + ",错误描述 = " + ex.getLocalizedMessage());
+
+                if (!isMail) {
+                    switch (done.getText().toString()) {
+                        case "验证":
+                            verifySmsCode();
+                            break;
+                        case "设置密码并登陆":
+                            if (!pass.getText().toString().equals(ver_pass.getText().toString())) {
+                                ShowToast("两次密码不一致，请重新输入密码");
+                                return;
+                            } else {
+                                BmobUser.resetPasswordBySMSCode(ResetPWDActivity.this, reset_code.getText().toString(), pass.getText().toString(), new ResetPasswordByCodeListener() {
+                                    @Override
+                                    public void done(BmobException ex) {
+                                        if (ex == null) {
+                                            ShowToast("密码重置成功");
+                                            resetLogin(name.getText().toString(), ver_pass.getText().toString());
+                                            ResetLayout.setVisibility(View.VISIBLE);
+                                            getSmsCode.setVisibility(View.GONE);
+                                        } else {
+                                            ShowToast("重置失败：错误代码 =" + ex.getErrorCode() + ",错误描述 = " + ex.getLocalizedMessage());
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
+
+                            break;
+                    }
+
+                } else {
+                    BmobUser.resetPasswordByEmail(ResetPWDActivity.this, email.getText().toString(), new ResetPasswordByEmailListener() {
+                        @Override
+                        public void onSuccess() {
+                            ShowToast("We have send a reset password link to your email: "+email.getText().toString());
                         }
 
-                        break;
+                        @Override
+                        public void onFailure(int i, String s) {
+                            ShowToast("Got some error :"+s);
+                        }
+                    });
                 }
             }
         });
