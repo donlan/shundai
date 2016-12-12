@@ -74,40 +74,40 @@ public class BirthActivity extends BaseActivity {
     private String getConstllation(String mm, String dd) {
         int M = Integer.parseInt(mm);
         int D = Integer.parseInt(dd);
-        if (D == 1 && D >= 21 || M == 2 && D <= 19) {
+        if (M == 1 && D >= 21 || M == 2 && D <= 19) {
             return "水瓶座";
         }
-        if (D == 2 && D >= 20 || M == 3 && D <= 20) {
+        if (M == 2 && D >= 20 || M == 3 && D <= 20) {
             return "双鱼座";
         }
-        if (D == 3 && D >= 21 || M == 4 && D <= 20) {
+        if (M == 3 && D >= 21 || M == 4 && D <= 20) {
             return "白羊座";
         }
-        if (D == 4 && D >= 21 || M == 5 && D <= 21) {
+        if (M == 4 && D >= 21 || M == 5 && D <= 21) {
             return "金牛座";
         }
-        if (D == 5 && D >= 22 || M == 6 && D <= 21) {
+        if (M == 5 && D >= 22 || M == 6 && D <= 21) {
             return "双子座";
         }
-        if (D == 6 && D >= 22 || M == 7 && D <= 22) {
+        if (M == 6 && D >= 22 || M == 7 && D <= 22) {
             return "巨蟹座";
         }
-        if (D == 7 && D >= 23 || M == 8 && D <= 22) {
+        if (M == 7 && D >= 23 || M == 8 && D <= 22) {
             return "狮子座";
         }
-        if (D == 8 && D >= 23 || M == 9 && D <= 23) {
+        if (M == 8 && D >= 23 || M == 9 && D <= 23) {
             return "处女座";
         }
-        if (D == 9 && D >= 24 || M == 10 && D <= 23) {
+        if (M == 9 && D >= 24 || M == 10 && D <= 23) {
             return "天秤座";
         }
-        if (D == 10 && D >= 24 || M == 11 && D <= 22) {
+        if (M == 10 && D >= 24 || M == 11 && D <= 22) {
             return "天蝎座";
         }
-        if (D == 11 && D >= 23 || M == 12 && D <= 21) {
+        if (M == 11 && D >= 23 || M == 12 && D <= 21) {
             return "射手座";
         }
-        if (D == 12 && D >= 22 || M == 1 && D <= 20) {
+        if (M == 12 && D >= 22 || M == 1 && D <= 20) {
             return "摩羯座";
         }
         return "未知";
